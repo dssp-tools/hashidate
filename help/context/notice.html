@@ -1,0 +1,103 @@
+﻿<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+      "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+  <meta http-equiv="content-type" content="text/html; charset=UTF-8" />
+  <title>ヘルプ</title>
+  <meta name="generator" content="Amaya, see http://www.w3.org/Amaya/" />
+  <link rel="stylesheet" type="text/css" href="../css/help.css" />
+  <script type="text/javascript" src="../script/help.js">
+  </script>
+</head>
+
+<body class="top" onload="chapter(12)">
+<img class="top" src="../img/back.png"></img>
+
+<a id="top" />
+<div class="contents">
+<iframe class="contents" src="contents.html" frameborder="0"></iframe>
+<div class="index">
+</div>
+</div>
+
+<div class="context">
+<div class="head">
+注意点と数式の例
+</div>
+<div class="back">
+<div class="section">
+絶対値の記号と縦棒の点字表示
+</div>
+<ul>
+<li>絶対値の記号<?xml version="1.0" encoding="UTF-8"?><math xmlns="http://www.w3.org/1998/Math/MathML" display="inline" fontFamily="Serif" mathsize="12pt" mathvariant="italic"><mo>|</mo><mi>x</mi><mo>|</mo></math>と<?xml version="1.0" encoding="UTF-8"?><math xmlns="http://www.w3.org/1998/Math/MathML" display="inline" fontFamily="Serif" mathsize="12pt" mathvariant="italic"><mo>{</mo><mtext>a｜a</mtext><mo>∈</mo><mtext>A</mtext><mo>}</mo></math>のような縦棒とでは点字が異なるので
+<ul>
+<li>・絶対値の記号では半角の「|」
+<li>・縦棒の場合は全角の「｜」
+</ul>
+を用いる。
+<div style="text-align:center;">
+上が<?xml version="1.0" encoding="UTF-8"?><math xmlns="http://www.w3.org/1998/Math/MathML" display="inline" fontFamily="Serif" mathsize="12pt" mathvariant="italic"><mo>|</mo><mi>x</mi><mo>|</mo></math>、下が<?xml version="1.0" encoding="UTF-8"?><math xmlns="http://www.w3.org/1998/Math/MathML" display="inline" fontFamily="Serif" mathsize="12pt" mathvariant="italic"><mo>{</mo><mtext>a｜a</mtext><mo>∈</mo><mtext>A</mtext><mo>}</mo></math>の場合
+<img src="../img/notice/00.jpg" class="dialog"></img>
+</div>
+<table>
+<tr><td style="text-align:center;">
+<?xml version="1.0" encoding="UTF-8"?><math xmlns="http://www.w3.org/1998/Math/MathML" display="inline" fontFamily="Serif" mathsize="12pt" mathvariant="italic"><mo>|</mo><mi>x</mi><mo>|</mo></math>の入力<br/>
+<img src="../img/notice/01.jpg" class="dialog"></img>
+</td><td style="text-align:center;">
+<?xml version="1.0" encoding="UTF-8"?><math xmlns="http://www.w3.org/1998/Math/MathML" display="inline" fontFamily="Serif" mathsize="12pt" mathvariant="italic"><mo>{</mo><mtext>a｜a</mtext><mo>∈</mo><mtext>A</mtext><mo>}</mo></math>の入力<br/>
+<img src="../img/notice/02.jpg" class="dialog"></img>
+</td></tr>
+</table>
+</ul>
+
+<div class="section">
+行列と表組みの点字表示
+</div>
+<ul>
+<li>行列と表組みはどちらもarray(TeXの場合)、mtable(MathMLの場合)を使うが、表組みはレイアウトにも用いるので、arrayまたはmtableの前後の括弧の有無、mtableの属性の有無とで列、行の間隔の扱いを分ける。<br/>
+<br/>
+括弧がある場合<br/>
+<hr>
+行列と判断し、点字の行と列の間に空白を入れる<br/>
+　例) \left(\begin{array}…<br/>
+　例) (\begin{array}…<br/>
+　例) &lt;mo&gt;(&lt;/mo&gt;&lt;mtable&gt;…<br/>
+　例) &lt;mfenced open="(" close=")"&gt;&lt;mtable&gt;…
+<br/><br/>
+括弧がない場合<br/>
+<hr/>
+表組みと判断し、mtableの属性によって扱いを分ける
+<ul>
+<li> ■ frame、rowlines、columnlines属性が一つもない、または、属性値がnoneの場合<br/>
+　点字の行と列の間を特には空けない<br/>
+　　例) &lt;mtable&gt;…<br/>
+　　例) &lt;mtable frame="none"&gt;…<br/>
+　セルの間を開けたい場合は空白のセルを入れる。<br/>
+　　例) \begin{array}1 & & 2\end{array}
+<li> ■ frame、rowlines、columnlines属性がnone以外の場合<br/>
+　行列の場合と同様に点字の行と列の間に空白を入れる<br/>
+　　例) &lt;mtable frame="solid"&gt;…　(墨字で枠線を入れる)<br/>
+　　例) &lt;mtable rowlines="dashed"&gt;…　(墨字で破線の罫線を入れる)<br/>
+　墨字で枠線や罫線を入れずに点字で間隔を空けるには、MathMLで規定されていない属性値を設定する<br/>
+　　例) &lt;mtable frame="empty"&gt;…
+</ul>
+</ul>
+
+<div style="text-align:center;">
+上が行列、下が表組み
+<img src="../img/notice/03.jpg" class="dialog"></img>
+</div>
+<table>
+<tr><td style="text-align:center;">
+行列の入力<br/>
+<img src="../img/notice/04.jpg" class="dialog"></img>
+</td><td style="text-align:center;">
+表組みの入力<br/>
+<img src="../img/notice/05.jpg" class="dialog"></img>
+</td></tr>
+</table>
+
+</div>
+</body>
+</html>

@@ -1,0 +1,89 @@
+﻿@CHARSET "UTF-8";
+body
+{
+	padding-left: 5%;
+	padding-right: 5%;
+	font-weight: bold;
+}
+body.in
+{
+	background-color: transparent;
+}
+p
+{
+	text-indent: 1em;
+}
+i
+{
+	letter-spacing: 0.3em;
+}
+img.icon
+{
+	border-style: solid;
+	border-width: 1px;
+	position: relative;
+	bottom: -3px;
+}
+/*
+table *
+{
+	border-style:solid;
+	border-width:1px;
+}
+*/
+li
+{
+	margin-bottom: 1em;
+}
+div
+{
+	text-indent: 0em;
+	padding-top: 1em;
+	padding-bottom: 0em;
+}
+div.head
+{
+	background: #ccffcc;
+	text-align: center;
+	font-size: 1em;
+}
+div.title
+{
+	background: linear-gradient(#FFAAAA, #FFEEEE, #FFAAAA);
+	padding-top: 0.5em;
+	padding-bottom: 0.5em;
+	border-radius:10px;
+}
+div.chapter
+{
+	font-size: 0.8em;
+	padding-left: 1em;
+}
+div.section
+{
+	background: #ccccff;
+	font-size: 1em;
+	padding-left: 2em;
+}
+div.subsection
+{
+	font-size: 1em;
+	padding-left: 3em;
+}
+div.equatin
+{
+	width: 100%;
+}
+div.figure
+{
+	width: 100%;
+}
+span.number
+{
+	position: absolute;
+	right: 6%;
+}
+math
+{
+	font-style: italic;
+}
