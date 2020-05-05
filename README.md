@@ -13,7 +13,7 @@
     mvn install
 
 * targetにhashidate.jarが生成されます
-* targetに下記のファイルがコピーされます
+* targetに下記のファイルがコピーされます<br>
 config.xml,braille.xml,equation.xml,mmlalias.xml,Lisense.txt
 * target/libに依存するライブラリがコピーされます
 * hashidate.jarはローカルのmavenリポジトリに登録されます
