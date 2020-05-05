@@ -1,153 +1,159 @@
 <project xmlns="http://maven.apache.org/POM/4.0.0"
-	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
-	xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
-	<modelVersion>4.0.0</modelVersion>
-	<groupId>dssp</groupId>
-	<artifactId>hashidate</artifactId>
-	<version>1.7.0</version>
-	<build>
-		<sourceDirectory>src</sourceDirectory>
-		<finalName>${artifactId}</finalName>
-		<resources>
-			<resource>
-				<directory>src</directory>
-				<excludes>
-					<exclude>**/*.java</exclude>
-				</excludes>
-			</resource>
-		</resources>
-		<plugins>
+  xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+  xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+  <modelVersion>4.0.0</modelVersion>
+  <groupId>dssp</groupId>
+  <artifactId>hashidate</artifactId>
+  <version>1.7.0</version>
 
-			<plugin>
-				<artifactId>maven-compiler-plugin</artifactId>
-				<version>3.8.0</version>
-				<configuration>
-					<source>1.8</source>
-					<target>1.8</target>
-				</configuration>
-			</plugin>
+  <properties>
+    <java.version>1.8</java.version>
+  </properties>
 
-			<!-- install時にMANIFEST.MF設定 -->
-			<plugin>
-				<groupId>org.apache.maven.plugins</groupId>
-				<artifactId>maven-jar-plugin</artifactId>
-				<configuration>
-					<archive>
-						<manifest>
-							<mainClass>dssp.hashidate.MainFrame</mainClass>
-							<addClasspath>true</addClasspath>
-							<classpathPrefix>lib/</classpathPrefix>
-						</manifest>
-					</archive>
-				</configuration>
-			</plugin>
+  <build>
+    <sourceDirectory>src</sourceDirectory>
+    <finalName>${artifactId}</finalName>
+    <resources>
+      <resource>
+        <directory>src</directory>
+        <excludes>
+          <exclude>**/*.java</exclude>
+        </excludes>
+      </resource>
+    </resources>
+    <plugins>
 
-			<!-- clean時に非mavenライブラリをリポジトリに登録 -->
-			<plugin>
-				<groupId>org.apache.maven.plugins</groupId>
-				<artifactId>maven-install-plugin</artifactId>
-				<executions>
-					<execution>
-						<id>install-external</id>
-						<phase>clean</phase>
-						<configuration>
-							<file>${basedir}/hashidate_lib/fmath-mathml-java-v3.1.jar</file>
-							<repositoryLayout>default</repositoryLayout>
-							<groupId>fmath</groupId>
-							<artifactId>fmath-mathml-java</artifactId>
-							<version>3.1</version>
-							<packaging>jar</packaging>
-							<generatePom>true</generatePom>
-						</configuration>
-						<goals>
-							<goal>install-file</goal>
-						</goals>
-					</execution>
-				</executions>
-			</plugin>
+      <plugin>
+        <artifactId>maven-compiler-plugin</artifactId>
+        <version>3.8.0</version>
+        <configuration>
+          <source>1.8</source>
+          <target>1.8</target>
+        </configuration>
+      </plugin>
 
-			<!-- install時に依存ライブラリを集約 -->
-			<plugin>
-				<groupId>org.apache.maven.plugins</groupId>
-				<artifactId>maven-dependency-plugin</artifactId>
-				<executions>
-					<execution>
-						<id>copy</id>
-						<phase>install</phase>
-						<goals>
-							<goal>copy-dependencies</goal>
-						</goals>
-						<configuration>
-							<outputDirectory>
-								${project.build.directory}/lib
-							</outputDirectory>
-						</configuration>
-					</execution>
-				</executions>
-			</plugin>
+      <!-- install時にMANIFEST.MF設定 -->
+      <plugin>
+        <groupId>org.apache.maven.plugins</groupId>
+        <artifactId>maven-jar-plugin</artifactId>
+        <configuration>
+          <archive>
+            <manifest>
+              <mainClass>dssp.hashidate.MainFrame</mainClass>
+              <addClasspath>true</addClasspath>
+              <classpathPrefix>lib/</classpathPrefix>
+            </manifest>
+          </archive>
+        </configuration>
+      </plugin>
 
-			<!-- install時に辞書ファイルをコピー -->
-			<plugin>
-				<groupId>org.apache.maven.plugins</groupId>
-				<artifactId>maven-antrun-plugin</artifactId>
-				<version>1.5</version>
-				<executions>
-					<execution>
-						<id>copy-template</id>
-						<phase>install</phase>
-						<configuration>
-							<target>
-								<echo message="copy dictionary files" />
-								<copy todir="${project.build.directory}">
-									<fileset dir="${basedir}">
-										<include name="config.xml" />
-										<include name="braille.xml" />
-										<include name="equation.xml" />
-										<include name="mmlalias.xml" />
-									</fileset>
-								</copy>
-							</target>
-						</configuration>
-						<goals>
-							<goal>run</goal>
-						</goals>
-					</execution>
-				</executions>
-			</plugin>
+      <!-- clean時に非mavenライブラリをリポジトリに登録 -->
+      <plugin>
+        <groupId>org.apache.maven.plugins</groupId>
+        <artifactId>maven-install-plugin</artifactId>
+        <executions>
+          <execution>
+            <id>install-external</id>
+            <phase>clean</phase>
+            <configuration>
+              <file>${basedir}/hashidate_lib/fmath-mathml-java-v3.1.jar</file>
+              <repositoryLayout>default</repositoryLayout>
+              <groupId>fmath</groupId>
+              <artifactId>fmath-mathml-java</artifactId>
+              <version>3.1</version>
+              <packaging>jar</packaging>
+              <generatePom>true</generatePom>
+            </configuration>
+            <goals>
+              <goal>install-file</goal>
+            </goals>
+          </execution>
+        </executions>
+      </plugin>
 
-		</plugins>
-	</build>
+      <!-- install時に依存ライブラリを集約 -->
+      <plugin>
+        <groupId>org.apache.maven.plugins</groupId>
+        <artifactId>maven-dependency-plugin</artifactId>
+        <executions>
+          <execution>
+            <id>copy</id>
+            <phase>install</phase>
+            <goals>
+              <goal>copy-dependencies</goal>
+            </goals>
+            <configuration>
+              <outputDirectory>
+                ${project.build.directory}/lib
+              </outputDirectory>
+            </configuration>
+          </execution>
+        </executions>
+      </plugin>
 
-	<dependencies>
+      <!-- install時に辞書ファイルをコピー -->
+      <plugin>
+        <groupId>org.apache.maven.plugins</groupId>
+        <artifactId>maven-antrun-plugin</artifactId>
+        <version>1.5</version>
+        <executions>
+          <execution>
+            <id>copy-template</id>
+            <phase>install</phase>
+            <configuration>
+              <target>
+                <echo message="copy dictionary files" />
+                <copy todir="${project.build.directory}">
+                  <fileset dir="${basedir}">
+                    <include name="config.xml" />
+                    <include name="braille.xml" />
+                    <include name="equation.xml" />
+                    <include name="mmlalias.xml" />
+                    <include name="Lisense.txt" />
+                  </fileset>
+                </copy>
+              </target>
+            </configuration>
+            <goals>
+              <goal>run</goal>
+            </goals>
+          </execution>
+        </executions>
+      </plugin>
 
-		<dependency>
-			<groupId>net.sourceforge.jeuclid</groupId>
-			<artifactId>jeuclid-core</artifactId>
-			<version>3.1.9</version>
-		</dependency>
+    </plugins>
+  </build>
 
-		<dependency>
-			<groupId>org.apache.xmlgraphics</groupId>
-			<artifactId>batik-svggen</artifactId>
-			<version>1.11</version>
-		</dependency>
+  <dependencies>
 
-		<dependency>
-			<groupId>de.rototor.snuggletex</groupId>
-			<artifactId>snuggletex-core</artifactId>
-			<version>1.3.0</version>
-		</dependency>
+    <dependency>
+      <groupId>net.sourceforge.jeuclid</groupId>
+      <artifactId>jeuclid-core</artifactId>
+      <version>3.1.9</version>
+    </dependency>
 
-		<dependency>
-			<groupId>dssp</groupId>
-			<artifactId>brailleLib</artifactId>
-			<version>1.7.0</version>
-		</dependency>
+    <dependency>
+      <groupId>org.apache.xmlgraphics</groupId>
+      <artifactId>batik-svggen</artifactId>
+      <version>1.11</version>
+    </dependency>
 
-		<dependency>
-			<groupId>fmath</groupId>
-			<artifactId>fmath-mathml-java</artifactId>
-			<version>3.1</version>
-		</dependency>
-	</dependencies>
+    <dependency>
+      <groupId>de.rototor.snuggletex</groupId>
+      <artifactId>snuggletex-core</artifactId>
+      <version>1.3.0</version>
+    </dependency>
+
+    <dependency>
+      <groupId>dssp</groupId>
+      <artifactId>brailleLib</artifactId>
+      <version>1.7.0</version>
+    </dependency>
+
+    <dependency>
+      <groupId>fmath</groupId>
+      <artifactId>fmath-mathml-java</artifactId>
+      <version>3.1</version>
+    </dependency>
+  </dependencies>
 </project>
