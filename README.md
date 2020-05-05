@@ -1,6 +1,10 @@
 # hashidate
 
-# ビルド手順
+## 橋立とは
+
+橋立はGUIで点図を作成するためのソフトウェアです。
+
+## ビルド手順
 必要なソフトウェア
 * maven
 
@@ -11,7 +15,7 @@
 * targetにhashidate.jarが生成されます
 * hashidate.jarはローカルのmavenリポジトリに登録されます
 
-# Windows実行ファイル(hashidate.exe)の作成
+## Windows実行ファイル(hashidate.exe)の作成
 必要なソフトウェア
 * launch4j
 
@@ -19,7 +23,7 @@
 
     launch4j hashidate.xml
 
-# 起動
+## 起動
 必要なソフトウェア
 * braillelib
 
@@ -31,11 +35,11 @@
 
     hashidate.exe
 
-# ライセンス
+## ライセンス
 [ライセンス](Lisense.txt)
 
 
-# リンク
+## リンク
 [障害学生支援プロジェクト Disabled-student Study Support Project(DSSP)](http://dssp.sakura.ne.jp/)
 
 [braillelib](https://github.com/dssp-tools/braillelib)
