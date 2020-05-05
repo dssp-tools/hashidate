@@ -1,46 +1,49 @@
 # hashidate
 
-## ‹´—§‚Æ‚Í
+## æ©‹ç«‹ã¨ã¯
 
-‹´—§‚ÍGUI‚Å“_}‚ğì¬‚·‚é‚½‚ß‚Ìƒ\ƒtƒgƒEƒFƒA‚Å‚·B
+æ©‹ç«‹ã¯GUIã§ç‚¹å›³ã‚’ä½œæˆã™ã‚‹ãŸã‚ã®ã‚½ãƒ•ãƒˆã‚¦ã‚§ã‚¢ã§ã™ã€‚
 
-## ƒrƒ‹ƒhè‡
-•K—v‚Èƒ\ƒtƒgƒEƒFƒA
+## ãƒ“ãƒ«ãƒ‰æ‰‹é †
+å¿…è¦ãªã‚½ãƒ•ãƒˆã‚¦ã‚§ã‚¢
 * maven
 
-ƒrƒ‹ƒh
+ãƒ“ãƒ«ãƒ‰
 
     mvn install
 
-* target‚Éhashidate.jar‚ª¶¬‚³‚ê‚Ü‚·
-* hashidate.jar‚Íƒ[ƒJƒ‹‚ÌmavenƒŠƒ|ƒWƒgƒŠ‚É“o˜^‚³‚ê‚Ü‚·
+* targetã«hashidate.jarãŒç”Ÿæˆã•ã‚Œã¾ã™
+* targetã«ä¸‹è¨˜ã®ãƒ•ã‚¡ã‚¤ãƒ«ãŒã‚³ãƒ”ãƒ¼ã•ã‚Œã¾ã™
+config.xml,braille.xml,equation.xml,mmlalias.xml,Lisense.txt
+* target/libã«ä¾å­˜ã™ã‚‹ãƒ©ã‚¤ãƒ–ãƒ©ãƒªãŒã‚³ãƒ”ãƒ¼ã•ã‚Œã¾ã™
+* hashidate.jarã¯ãƒ­ãƒ¼ã‚«ãƒ«ã®mavenãƒªãƒã‚¸ãƒˆãƒªã«ç™»éŒ²ã•ã‚Œã¾ã™
 
-## WindowsÀsƒtƒ@ƒCƒ‹(hashidate.exe)‚Ìì¬
-•K—v‚Èƒ\ƒtƒgƒEƒFƒA
+## Windowså®Ÿè¡Œãƒ•ã‚¡ã‚¤ãƒ«(hashidate.exe)ã®ä½œæˆ
+å¿…è¦ãªã‚½ãƒ•ãƒˆã‚¦ã‚§ã‚¢
 * launch4j
 
-ì¬
+ä½œæˆ
 
     launch4j hashidate.xml
 
-## ‹N“®
-•K—v‚Èƒ\ƒtƒgƒEƒFƒA
+## èµ·å‹•
+å¿…è¦ãªã‚½ãƒ•ãƒˆã‚¦ã‚§ã‚¢
 * braillelib
 
-‹N“®
+èµ·å‹•
 
     java -jar hashidate.jar
 
-‚Ü‚½‚Í
+ã¾ãŸã¯
 
     hashidate.exe
 
-## ƒ‰ƒCƒZƒ“ƒX
-[ƒ‰ƒCƒZƒ“ƒX](Lisense.txt)
+## ãƒ©ã‚¤ã‚»ãƒ³ã‚¹
+[ãƒ©ã‚¤ã‚»ãƒ³ã‚¹](Lisense.txt)
 
 
-## ƒŠƒ“ƒN
-[áŠQŠw¶x‰‡ƒvƒƒWƒFƒNƒg Disabled-student Study Support Project(DSSP)](http://dssp.sakura.ne.jp/)
+## ãƒªãƒ³ã‚¯
+[éšœå®³å­¦ç”Ÿæ”¯æ´ãƒ—ãƒ­ã‚¸ã‚§ã‚¯ãƒˆ Disabled-student Study Support Project(DSSP)](http://dssp.sakura.ne.jp/)
 
 [braillelib](https://github.com/dssp-tools/braillelib)
 
