@@ -23,6 +23,8 @@
 必要なソフトウェア
 * braillelib
 
+起動
+
     java -jar hashidate.jar
 
 または
