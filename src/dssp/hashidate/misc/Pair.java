@@ -1,7 +1,5 @@
 package dssp.hashidate.misc;
 
-import java.util.Objects;
-
 /*
  * 名前とオブジェクトの組
  */
@@ -40,16 +38,11 @@ public class Pair {
         if (null == text) {
             return null;
         }
-        String name = null;
-        StringBuilder buf = new StringBuilder();
-        for (char c : text.toCharArray()) {
-            if (Objects.isNull(name) && SEPARATOR.equals(String.valueOf(c))) {
-                name = buf.toString();
-                buf.delete(0, buf.length());
-                continue;
-            }
-            buf.append(c);
-        }
-        return new Pair(name.trim(), buf.toString());
+
+        int pos = text.indexOf(SEPARATOR);
+
+        String name = (0 > pos ? text : text.substring(0, pos));
+        String val = (0 > pos ? null : text.substring(pos + 1));
+        return new Pair(name.trim(), val);
     }
 }
