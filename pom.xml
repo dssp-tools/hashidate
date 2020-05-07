@@ -150,10 +150,17 @@
       <version>1.7.0</version>
     </dependency>
 
+    <!-- fmath  -->
     <dependency>
       <groupId>fmath</groupId>
       <artifactId>fmath-mathml-java</artifactId>
       <version>3.1</version>
     </dependency>
+  <dependency>
+      <groupId>org.jdom</groupId>
+      <artifactId>jdom2</artifactId>
+      <version>2.0.6</version>
+  </dependency>
+
   </dependencies>
 </project>
