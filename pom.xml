@@ -71,14 +71,14 @@
         </executions>
       </plugin>
 
-      <!-- install時に依存ライブラリを集約 -->
+      <!-- package時に依存ライブラリを集約 -->
       <plugin>
         <groupId>org.apache.maven.plugins</groupId>
         <artifactId>maven-dependency-plugin</artifactId>
         <executions>
           <execution>
             <id>copy</id>
-            <phase>install</phase>
+            <phase>package</phase>
             <goals>
               <goal>copy-dependencies</goal>
             </goals>
@@ -91,7 +91,7 @@
         </executions>
       </plugin>
 
-      <!-- install時に辞書ファイルをコピー -->
+      <!-- package時に辞書ファイルをコピー -->
       <plugin>
         <groupId>org.apache.maven.plugins</groupId>
         <artifactId>maven-antrun-plugin</artifactId>
@@ -99,7 +99,7 @@
         <executions>
           <execution>
             <id>copy-template</id>
-            <phase>install</phase>
+            <phase>package</phase>
             <configuration>
               <target>
                 <echo message="copy dictionary files" />
