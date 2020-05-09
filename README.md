@@ -10,13 +10,12 @@
 
 ビルド
 
-    mvn install
+    mvn package
 
 * targetにhashidate.jarが生成されます
 * targetに下記のファイルがコピーされます<br>
 config.xml,braille.xml,equation.xml,mmlalias.xml,Lisense.txt
 * target/libに依存するライブラリがコピーされます
-* hashidate.jarはローカルのmavenリポジトリに登録されます
 
 ## Windows実行ファイル(hashidate.exe)の作成
 必要なソフトウェア
