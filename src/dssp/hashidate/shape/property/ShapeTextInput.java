@@ -42,9 +42,6 @@ import javax.swing.event.DocumentEvent;
 import javax.swing.event.DocumentListener;
 import javax.swing.text.BadLocationException;
 
-import org.w3c.dom.Document;
-import org.w3c.dom.Element;
-
 import dssp.brailleLib.BrailleBox;
 import dssp.brailleLib.BrailleEditListener;
 import dssp.brailleLib.BrailleEditPanel;
@@ -52,7 +49,6 @@ import dssp.brailleLib.BrailleInfo;
 import dssp.brailleLib.BrailleRenderer;
 import dssp.brailleLib.BrailleTranslater;
 import dssp.brailleLib.Util;
-import dssp.brailleLib.XmlUtil;
 import dssp.hashidate.config.Config;
 import dssp.hashidate.misc.UndoFactory;
 import dssp.hashidate.shape.SHAPE;
@@ -591,28 +587,28 @@ public final class ShapeTextInput extends JDialog implements DocumentListener {
             return;
         }
         FormulaHandler handler = FormulaHandler.getInstance();
-        this.mathML = handler.TeXtoMathML(text, true, this.getFontFamily(), this.getFontSize(), this.getFontStyle());
-        if (null != this.mathML) {
+        String tmp = handler.TeXtoMathML(text, true, this.getFontFamily(), this.getFontSize(), this.getFontStyle());
+        if (null != tmp) {
+            this.mathML = tmp;
             drawFormula(false);
             return;
         }
 
-        this.mathML = text;
-        try {
-            Document doc = XmlUtil.parse(this.mathML);
-
-            Element math = doc.getDocumentElement();
-            math.setAttribute("xmlns", "http://www.w3.org/1998/Math/MathML");
-            math.setAttribute("mathsize", String.format("%dpt", this.getFontSize()));
-            math.setAttribute("fontFamily", this.getFontFamily());
-            math.setAttribute("mathvariant", handler.getFontStyleText(this.getFontStyle()));
-
-            this.mathML = XmlUtil.getXmlText(doc);
-            this.setFormula(this.mathML);
-            this.drawFormula(false);
-        } catch (Exception ex) {
-            Util.logException(ex);
-        }
+        //        try {
+        //            Document doc = XmlUtil.parse(text);
+        //
+        //            Element math = doc.getDocumentElement();
+        //            math.setAttribute("xmlns", "http://www.w3.org/1998/Math/MathML");
+        //            math.setAttribute("mathsize", String.format("%dpt", this.getFontSize()));
+        //            math.setAttribute("fontFamily", this.getFontFamily());
+        //            math.setAttribute("mathvariant", handler.getFontStyleText(this.getFontStyle()));
+        //
+        //            this.mathML = XmlUtil.getXmlText(doc);
+        //            this.setFormula(this.mathML);
+        //            this.drawFormula(false);
+        //        } catch (Exception ex) {
+        //            Util.logException(ex);
+        //        }
     }
 
     void drawFormula(boolean needConvert) {
