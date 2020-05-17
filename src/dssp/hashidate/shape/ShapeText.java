@@ -300,6 +300,17 @@ public class ShapeText extends DesignObject {
     }
 
     @Override
+    public Rectangle2D getShapeBound() {
+        Rectangle2D bound = new Rectangle2D.Double();
+
+        bound.setRect(this.x, this.y,
+                Math.max(this.frame.width * this.scale.x, this.brailleBound.getWidth()),
+                Math.max(this.frame.height * this.scale.y, this.brailleBound.getHeight()));
+
+        return bound;
+    }
+
+    @Override
     public BufInfo getBuffer(Graphics2D g) {
         BufInfo info = super.getBuffer(g);
         if (false == this.braille) {
