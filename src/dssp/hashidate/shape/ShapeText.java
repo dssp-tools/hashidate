@@ -300,12 +300,20 @@ public class ShapeText extends DesignObject {
     }
 
     @Override
-    public Rectangle2D getShapeBound() {
+    protected Rectangle2D getShapeBound() {
         Rectangle2D bound = new Rectangle2D.Double();
 
         bound.setRect(this.x, this.y,
                 Math.max(this.frame.width * this.scale.x, this.brailleBound.getWidth()),
                 Math.max(this.frame.height * this.scale.y, this.brailleBound.getHeight()));
+
+        return bound;
+    }
+
+    @Override
+    protected Rectangle2D getBrailleBound() {
+        Rectangle2D bound = new Rectangle2D.Double();
+        bound.setRect(this.brailleBound);
 
         return bound;
     }

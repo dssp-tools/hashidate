@@ -6,6 +6,7 @@ import java.awt.Rectangle;
 import java.awt.geom.Rectangle2D;
 import java.awt.image.BufferedImage;
 import java.util.List;
+import java.util.Objects;
 
 import javax.swing.JMenuItem;
 
@@ -25,8 +26,6 @@ import dssp.hashidate.misc.PairList;
 public class ShapeGroup extends DesignObject {
 
     private List<DesignObject> group = Util.newArrayList();
-
-    private Rectangle2D.Double bound = new Rectangle2D.Double();
 
     public ShapeGroup() {
         this.shape = SHAPE.GROUP;
@@ -114,8 +113,8 @@ public class ShapeGroup extends DesignObject {
             group.get(i).drawBraille(g, printing);
         }
         if (isSelected()) {
-            Rectangle rect = new Rectangle(this.x, this.y, (int) bound.width, (int) bound.height);
-            drawFrame(g, rect);
+            g.setColor(this.frameColor);
+            g.draw(getBrailleBound());
         }
     }
 
@@ -382,10 +381,8 @@ public class ShapeGroup extends DesignObject {
         if (group.add(obj)) {
             if (1 == group.size()) {
                 this.setRect(obj);
-                bound.setFrame(obj.getShapeBound());
             } else {
                 this.add(obj);
-                bound.add(obj.getShapeBound());
             }
             return true;
         }
@@ -413,6 +410,7 @@ public class ShapeGroup extends DesignObject {
     protected BufInfo getBuffer(Graphics2D g) {
         BufInfo info = new BufInfo();
 
+        Rectangle2D bound = this.getShapeBound();
         info.setBuf(new BufferedImage((int) bound.getWidth() + 4 * TOGGLE, (int) bound.getHeight() + 4 * TOGGLE,
                 BufferedImage.TYPE_4BYTE_ABGR));
 
@@ -420,5 +418,35 @@ public class ShapeGroup extends DesignObject {
         info.getTg().translate(-this.x + 2 * TOGGLE, -this.y + 2 * TOGGLE);
 
         return info;
+    }
+
+    @Override
+    protected Rectangle2D getShapeBound() {
+        Rectangle2D.Double bound = null;
+        for (DesignObject obj : this.group) {
+            if (Objects.isNull(bound)) {
+                bound = new Rectangle2D.Double();
+                bound.setFrame(obj.getShapeBound());
+            } else {
+                bound.add(obj.getShapeBound());
+            }
+        }
+
+        return bound;
+    }
+
+    @Override
+    protected Rectangle2D getBrailleBound() {
+        Rectangle2D.Double bound = null;
+        for (DesignObject obj : this.group) {
+            if (Objects.isNull(bound)) {
+                bound = new Rectangle2D.Double();
+                bound.setFrame(obj.getBrailleBound());
+            } else {
+                bound.add(obj.getBrailleBound());
+            }
+        }
+
+        return bound;
     }
 }

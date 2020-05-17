@@ -1075,7 +1075,11 @@ public abstract class DesignObject extends Rectangle implements Cloneable {
         return hint;
     }
 
-    public Rectangle2D getShapeBound() {
+    protected Rectangle2D getShapeBound() {
+        return this;
+    }
+
+    protected Rectangle2D getBrailleBound() {
         return this;
     }
 }
