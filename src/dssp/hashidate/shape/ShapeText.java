@@ -132,7 +132,10 @@ public class ShapeText extends DesignObject {
 
         obj.image = null;
         obj.brailleBound = null;
-        obj.brailleList = null;
+        obj.brailleList = new ArrayList<>();
+        for (BrailleInfo b : this.brailleList) {
+            obj.brailleList.add(b.clone());
+        }
 
         obj.initText();
         obj.adaptFrame();
@@ -376,7 +379,9 @@ public class ShapeText extends DesignObject {
         switch (this.shape) {
         case FORMULA:
             this.brailleList = new ArrayList<>();
-            BrailleToolkit.getFormula().fromMathML(this.mathML, false, this.brailleList);
+            if (null == this.brailleList) {
+                BrailleToolkit.getFormula().fromMathML(this.mathML, false, this.brailleList);
+            }
             this.brailleBound = BrailleToolkit.getRenderer().getBound(this.brailleList, this.x, this.y, false);
             break;
         case TEXT:
