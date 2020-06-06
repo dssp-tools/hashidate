@@ -378,8 +378,8 @@ public class ShapeText extends DesignObject {
 
         switch (this.shape) {
         case FORMULA:
-            this.brailleList = new ArrayList<>();
             if (null == this.brailleList) {
+                this.brailleList = new ArrayList<>();
                 BrailleToolkit.getFormula().fromMathML(this.mathML, false, this.brailleList);
             }
             this.brailleBound = BrailleToolkit.getRenderer().getBound(this.brailleList, this.x, this.y, false);
