@@ -18,9 +18,6 @@ import java.awt.image.BufferedImage;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Objects;
-import java.util.concurrent.Executors;
-import java.util.concurrent.ScheduledExecutorService;
-import java.util.concurrent.TimeUnit;
 
 import javax.swing.JButton;
 import javax.swing.JCheckBox;
@@ -322,51 +319,72 @@ public final class ShapeTextInput extends JDialog implements DocumentListener {
     }
 
     private boolean isChanged = false;
-    private ScheduledExecutorService timer = null;
+    private boolean shouldWait = false;
+    private Thread thread = null;
 
     private synchronized void setChange(boolean flag) {
         isChanged = flag;
+        if (flag) {
+            notifyChange();
+        }
     }
 
     private void stopWatch() {
+        if (Objects.nonNull(thread)) {
+            shouldWait = false;
+            notifyChange();
+            thread = null;
+        }
+    }
+
+    private synchronized void notifyChange() {
+        this.notifyAll();
+    }
+
+    private synchronized void waitChange() {
         try {
-            timer.shutdown();
-            timer.awaitTermination(5000, TimeUnit.MILLISECONDS);
-            timer = null;
+            this.wait();
         } catch (InterruptedException e) {
-            // 何もしない
         }
     }
 
     private void startWatch() {
-        if (Objects.isNull(timer)) {
-            timer = Executors.newSingleThreadScheduledExecutor();
-            timer.scheduleWithFixedDelay(new Runnable() {
 
+        if (Objects.isNull(thread)) {
+            shouldWait = true;
+            thread = new Thread(new Runnable() {
                 @Override
                 public void run() {
-                    checkText();
+                    while (true) {
+                        waitChange();
+                        if (!shouldWait) {
+                            break;
+                        }
+                        checkText();
+                    }
                 }
-
-            }, 0, 500, TimeUnit.MILLISECONDS);
+            });
+            thread.start();
         }
     }
 
     private void checkText() {
-        while (Objects.nonNull(timer) && !timer.isShutdown()) {
-            if (isChanged) {
+        if (Objects.nonNull(thread)) {
+            while (isChanged) {
+                String text = null;
                 switch (mode) {
                 case TEXT:
                     break;
                 case FORMULA:
-                    updateFormula();
+                    text = updateFormula();
                     break;
                 default:
                 }
-                setChange(false);
+                if (Objects.isNull(text) || text.equals(this.getFormula())) {
+                    setChange(false);
+                }
             }
         }
-
     }
 
     public void clear() {
@@ -573,26 +591,28 @@ public final class ShapeTextInput extends JDialog implements DocumentListener {
         }
     }
 
-    void updateFormula() {
+    String updateFormula() {
         if (false == this.isVisible()) {
-            return;
+            return null;
         }
         if (SHAPE.FORMULA != this.mode) {
-            return;
+            return null;
         }
         String text = this.getFormula();
         if (0 == text.length()) {
             this.panelImage = null;
             this.showImageArea();
-            return;
+            return null;
         }
         FormulaHandler handler = FormulaHandler.getInstance();
         String tmp = handler.TeXtoMathML(text, true, this.getFontFamily(), this.getFontSize(), this.getFontStyle());
         if (null != tmp) {
             this.mathML = tmp;
             drawFormula(false);
-            return;
+            return text;
         }
+
+        return null;
 
         //        try {
         //            Document doc = XmlUtil.parse(text);
