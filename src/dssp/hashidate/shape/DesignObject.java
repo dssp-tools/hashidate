@@ -166,6 +166,10 @@ public abstract class DesignObject extends Rectangle implements Cloneable {
         return this.changed;
     }
 
+    public void setChanged(boolean flag) {
+        this.changed = flag;
+    }
+
     public final void notifyChanged() {
         if (null == this.objMan) {
             Util.logInfo("No object manager %s", this.getClass().getSimpleName());
