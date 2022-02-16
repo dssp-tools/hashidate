@@ -1,9 +1,15 @@
 /**
- * 
+ *
  */
 function init()
 {
+	version();
     chapter(0);
+}
+
+function version(){
+	var elm = document.getElementById("version");
+	elm.innerHTML = "1.09";
 }
 
 function chapter(chapterIndex)

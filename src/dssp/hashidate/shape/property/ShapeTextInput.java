@@ -365,6 +365,9 @@ public final class ShapeTextInput extends JDialog implements DocumentListener {
                 }
             });
             thread.start();
+            if (mode == SHAPE.FORMULA) {
+                updateFormula();
+            }
         }
     }
 

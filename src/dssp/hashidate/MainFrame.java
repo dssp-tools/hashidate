@@ -77,7 +77,7 @@ import dssp.hashidate.shape.helper.ObjectFactory;
  */
 public final class MainFrame {
     public static String APP_NAME = "橋立";
-    public static int[] VERSION = { 1, 8 };
+    public static int[] VERSION = { 1, 9 };
     public static String VERSION_FORMAT = "%d.%02d";
     public static ImageIcon icon;
 
@@ -2217,14 +2217,13 @@ public final class MainFrame {
                     um.change();
                     um.fixEdit();
                     um.readyEdit(index, obj.clone());
+                    obj.setChanged(false);
                 } else {
                     um.cancelEdit();
-                    ;
                 }
             } else {
                 this.selObjList.remove(obj);
                 um.delete();
-                ;
             }
             this.designPanel.repaint();
         }
