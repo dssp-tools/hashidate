@@ -145,7 +145,7 @@
     <dependency>
       <groupId>dssp</groupId>
       <artifactId>brailleLib</artifactId>
-      <version>1.7.0</version>
+      <version>1.3.0</version>
     </dependency>
 
     <!-- fmath -->
