@@ -64,10 +64,11 @@ public final class ImportSVG {
     private SVGDocument document;
 
     public List<DesignObject> importFile(String path) {
-        if (null == path || false == Files.exists(FileSystems.getDefault().getPath(path))) {
+        if (null == path || false == Files.exists(FileSystems.getDefault().getPath(path))
+                || Files.isDirectory(FileSystems.getDefault().getPath(path))) {
             FileNameExtensionFilter filter = new FileNameExtensionFilter("SVG ファイル(*.svg)", "svg");
             FileNameExtensionFilter[] list = { filter };
-            this.file = Util.selectFile(null, "*", list, false);
+            this.file = Util.selectFile(path, "*", list, false);
             if (null == this.file) {
                 return null;
             }

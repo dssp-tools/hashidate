@@ -4,7 +4,7 @@
   <modelVersion>4.0.0</modelVersion>
   <groupId>dssp</groupId>
   <artifactId>hashidate</artifactId>
-  <version>1.8.0</version>
+  <version>1.10.0</version>
 
   <properties>
     <java.version>1.8</java.version>
@@ -48,30 +48,12 @@
       </plugin>
 
       <!-- clean時に非mavenライブラリをリポジトリに登録 -->
-<!--
-      <plugin>
-        <groupId>org.apache.maven.plugins</groupId>
-        <artifactId>maven-install-plugin</artifactId>
-        <executions>
-          <execution>
-            <id>install-external</id>
-            <phase>clean</phase>
-            <configuration>
-              <file>${basedir}/hashidate_lib/fmath-mathml-java-v3.1.jar</file>
-              <repositoryLayout>default</repositoryLayout>
-              <groupId>fmath</groupId>
-              <artifactId>fmath-mathml-java</artifactId>
-              <version>3.1</version>
-              <packaging>jar</packaging>
-              <generatePom>true</generatePom>
-            </configuration>
-            <goals>
-              <goal>install-file</goal>
-            </goals>
-          </execution>
-        </executions>
-      </plugin>
--->
+      <!-- <plugin> <groupId>org.apache.maven.plugins</groupId> <artifactId>maven-install-plugin</artifactId>
+        <executions> <execution> <id>install-external</id> <phase>clean</phase> <configuration>
+        <file>${basedir}/hashidate_lib/fmath-mathml-java-v3.1.jar</file> <repositoryLayout>default</repositoryLayout>
+        <groupId>fmath</groupId> <artifactId>fmath-mathml-java</artifactId> <version>3.1</version>
+        <packaging>jar</packaging> <generatePom>true</generatePom> </configuration>
+        <goals> <goal>install-file</goal> </goals> </execution> </executions> </plugin> -->
       <!-- package時に依存ライブラリを集約 -->
       <plugin>
         <groupId>org.apache.maven.plugins</groupId>
@@ -133,32 +115,24 @@
       <artifactId>jeuclid-core</artifactId>
       <version>3.1.9</version>
     </dependency>
- <dependency>
-    <groupId>org.apache.xmlgraphics</groupId>
-    <artifactId>batik-svggen</artifactId>
-    <version>1.13</version>
-</dependency>
- <dependency>
-    <groupId>org.apache.xmlgraphics</groupId>
-    <artifactId>batik-codec</artifactId>
-    <version>1.13</version>
-</dependency>
-<!-- <dependency>
-    <groupId>org.apache.xmlgraphics</groupId>
-    <artifactId>batik-extension</artifactId>
-    <version>1.13</version>
-</dependency>
-<dependency>
-    <groupId>org.apache.xmlgraphics</groupId>
-    <artifactId>batik-gui-util</artifactId>
-    <version>1.13</version>
-</dependency>
-<dependency>
-    <groupId>org.apache.xmlgraphics</groupId>
-    <artifactId>batik-swing</artifactId>
-    <version>1.13</version>
-</dependency>
- -->
+    <dependency>
+      <groupId>org.apache.xmlgraphics</groupId>
+      <artifactId>batik-svggen</artifactId>
+      <version>1.7</version>
+    </dependency>
+    <dependency>
+      <groupId>org.apache.xmlgraphics</groupId>
+      <artifactId>batik-codec</artifactId>
+      <version>1.7</version>
+    </dependency>
+    <!-- <dependency> <groupId>org.apache.xmlgraphics</groupId> <artifactId>batik-svggen</artifactId>
+      <version>1.13</version> </dependency> <dependency> <groupId>org.apache.xmlgraphics</groupId>
+      <artifactId>batik-codec</artifactId> <version>1.13</version> </dependency> -->
+    <!-- <dependency> <groupId>org.apache.xmlgraphics</groupId> <artifactId>batik-extension</artifactId>
+      <version>1.13</version> </dependency> <dependency> <groupId>org.apache.xmlgraphics</groupId>
+      <artifactId>batik-gui-util</artifactId> <version>1.13</version> </dependency>
+      <dependency> <groupId>org.apache.xmlgraphics</groupId> <artifactId>batik-swing</artifactId>
+      <version>1.13</version> </dependency> -->
 
     <!-- SnuggleTeX -->
     <dependency>
@@ -175,17 +149,8 @@
     </dependency>
 
     <!-- fmath -->
-<!--
-    <dependency>
-      <groupId>fmath</groupId>
-      <artifactId>fmath-mathml-java</artifactId>
-      <version>3.1</version>
-    </dependency>
-    <dependency>
-      <groupId>org.jdom</groupId>
-      <artifactId>jdom2</artifactId>
-      <version>2.0.6</version>
-    </dependency>
--->
+    <!-- <dependency> <groupId>fmath</groupId> <artifactId>fmath-mathml-java</artifactId>
+      <version>3.1</version> </dependency> <dependency> <groupId>org.jdom</groupId>
+      <artifactId>jdom2</artifactId> <version>2.0.6</version> </dependency> -->
   </dependencies>
 </project>

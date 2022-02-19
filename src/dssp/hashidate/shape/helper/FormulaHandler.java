@@ -298,8 +298,8 @@ public class FormulaHandler {
             g3.setTransform(at);
             view.draw(g3, 0, ascent);
         } catch (Exception ex) {
-            //            Util.logException(ex);
-            //            Util.logInfo(text);
+            Util.logException(ex);
+            Util.logInfo(text);
         }
 
         return image;
