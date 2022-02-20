@@ -57,6 +57,7 @@ import javax.swing.UIManager;
 
 import dssp.brailleLib.Util;
 import dssp.hashidate.config.Config;
+import dssp.hashidate.config.TempConfig;
 import dssp.hashidate.io.ExportBPLOT;
 import dssp.hashidate.io.ExportSVG;
 import dssp.hashidate.io.ImportSVG;
@@ -77,7 +78,7 @@ import dssp.hashidate.shape.helper.ObjectFactory;
  */
 public final class MainFrame {
     public static String APP_NAME = "橋立";
-    public static int[] VERSION = { 1, 9 };
+    public static int[] VERSION = { 1, 10 };
     public static String VERSION_FORMAT = "%d.%02d";
     public static ImageIcon icon;
 
@@ -1402,19 +1403,28 @@ public final class MainFrame {
     */
     private void openFile(String path) {
         saveCheck();
-        this.objMan = new ObjectManager();
-        ObjectFactory.getInstance().set(this.objMan, designPanel);
-        ObjectUndoManager.init(this.objMan);
-        // ImportSVG handler = new ImportSVG(this.designPanel);
-        ImportSVG handler = new ImportSVG();
+
+        // 前回開いたパスを探す
+        path = TempConfig.checkLastPath(path);
+
+        ObjectManager tobjMan = new ObjectManager();
         this.setWaitCursor();
-        this.objMan.loadSVG(handler, path);
+        ImportSVG handler = new ImportSVG();
+        ObjectFactory.getInstance().set(tobjMan, designPanel);
+        if (tobjMan.loadSVG(handler, path)) {
+            this.objMan = tobjMan;
+            ObjectFactory.getInstance().set(this.objMan, designPanel);
+            ObjectUndoManager.init(this.objMan);
+            this.objMan.stored();
+            this.designPanel.setObjectManager(this.objMan);
+            setTitle();
+            frmSample.validate();
+            redraw();
+
+            // 開いたパスを記憶する
+            TempConfig.storePath(path, this.objMan.getFile());
+        }
         this.resetCursor();
-        this.objMan.stored();
-        this.designPanel.setObjectManager(this.objMan);
-        setTitle();
-        frmSample.validate();
-        redraw();
     }
 
     /**
@@ -1438,6 +1448,10 @@ public final class MainFrame {
             this.objMan.setFile(export.end());
             this.objMan.stored();
             setTitle();
+            // 前回開いたパスを探す
+            String path = TempConfig.checkLastPath(null);
+            // 開いたパスを記憶する
+            TempConfig.storePath(path, this.objMan.getFile());
             return true;
         }
         return false;

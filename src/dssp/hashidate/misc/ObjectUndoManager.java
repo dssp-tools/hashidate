@@ -158,7 +158,7 @@ public class ObjectUndoManager
 	}
 
 	/**
-	 * 新しい操作：追加<br/>
+	 * 新しい操作：追加<br>
 	 * 番号が負の場合はなにもしない
 	 *
 	 * @param editInfo 追加したオブジェクトの情報
@@ -178,7 +178,7 @@ public class ObjectUndoManager
 	}
 
 	/**
-	 * 新しい操作/継続操作：変更<br/>
+	 * 新しい操作/継続操作：変更<br>
 	 */
 	public void change()
 	{
@@ -200,7 +200,7 @@ public class ObjectUndoManager
 	}
 
 	/**
-	 * 新しい操作の準備<br/>
+	 * 新しい操作の準備<br>
 	 * 番号が負の場合はなにもしない
 	 *
 	 * @param index 変更したオブジェクトの番号
@@ -249,7 +249,7 @@ public class ObjectUndoManager
 	}
 
 	/**
-	 * 新しい操作の確定：変更<br/>
+	 * 新しい操作の確定：変更<br>
 	 * 番号が負の場合はなにもしない
 	 */
 	public void fixEdit()
@@ -271,7 +271,7 @@ public class ObjectUndoManager
 	}
 
 	/**
-	 * 新しい操作：削除<br/>
+	 * 新しい操作：削除<br>
 	 */
 	public void delete()
 	{

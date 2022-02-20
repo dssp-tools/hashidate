@@ -93,8 +93,8 @@ public final class ShapeInfo
 	}
 
 	/**
-	 * SVGのdescを取得する<br/>
-	 * ・objがnullまたはPairListの場合はPairListのリスト返す<br/>
+	 * SVGのdescを取得する<br>
+	 * ・objがnullまたはPairListの場合はPairListのリスト返す<br>
 	 * ・objが文字列の場合はPairList.toString()を返す
 	 *
 	 * @param obj

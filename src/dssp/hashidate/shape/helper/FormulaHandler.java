@@ -225,7 +225,7 @@ public class FormulaHandler {
     }
 
     /**
-    * MathMLの数式い画像を取得する<br/>
+    * MathMLの数式い画像を取得する<br>
     *
     * getImageForMathML(String text, String fontFamily, Point2D.Double scale)で拡大率に縦、横1をしてした場合と同じ
     *
@@ -298,8 +298,8 @@ public class FormulaHandler {
             g3.setTransform(at);
             view.draw(g3, 0, ascent);
         } catch (Exception ex) {
-            //            Util.logException(ex);
-            //            Util.logInfo(text);
+            Util.logException(ex);
+            Util.logInfo(text);
         }
 
         return image;

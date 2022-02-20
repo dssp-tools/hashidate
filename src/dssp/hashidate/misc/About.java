@@ -79,10 +79,10 @@ public class About
 	public static void show()
 	{
 		String ABOUT = "<html><body>";
-		ABOUT += "橋立 " + MainFrame.VERSION_FORMAT + "<br/>";
-		ABOUT += "障害学生支援プロジェクト<br/>";
-		ABOUT += "Disabled-student Study Support Project (DSSP)<br/>";
-		ABOUT += "<a href=%s>%s</a><br/>";
+		ABOUT += "橋立 " + MainFrame.VERSION_FORMAT + "<br>";
+		ABOUT += "障害学生支援プロジェクト<br>";
+		ABOUT += "Disabled-student Study Support Project (DSSP)<br>";
+		ABOUT += "<a href=%s>%s</a><br>";
 		ABOUT += About.status.message;
 		ABOUT += "</body></html>";
 

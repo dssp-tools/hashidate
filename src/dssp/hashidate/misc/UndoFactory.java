@@ -25,8 +25,8 @@ public class UndoFactory extends KeyAdapter implements UndoableEditListener
 	private int redoKey = KeyEvent.VK_Y;
 
 	/**
-	 * JTextComponentにUNDO/REDO機能を追加する<br/>
-	 * ・Ctrl+z UNDO<br/>
+	 * JTextComponentにUNDO/REDO機能を追加する<br>
+	 * ・Ctrl+z UNDO<br>
 	 * ・Ctrl+y REDO
 	 *
 	 * @param comp 追加するJTextComponent
@@ -41,7 +41,7 @@ public class UndoFactory extends KeyAdapter implements UndoableEditListener
 	}
 
 	/**
-	 * JTextComponentにUNDO/REDO機能を追加する<br/>
+	 * JTextComponentにUNDO/REDO機能を追加する<br>
 	 * ・Ctrl+指定したキーでUNDO/REDOを行う
 	 *
 	 * @param comp 追加するJTextComponent

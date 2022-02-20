@@ -95,7 +95,7 @@ public final class BrailleFormula
 	 * @param mathML MathML
 	 * @param inLine true=文章中の数式 false=数式単独
 	 * @param formula 数式の点字のリスト
-	 * @return 墨字の数<br/>負数=失敗した場合
+	 * @return 墨字の数<br>負数=失敗した場合
 	 */
 	public int fromMathML(String mathML, boolean inLine, List<BrailleInfo> formula)
 	{
@@ -121,7 +121,7 @@ public final class BrailleFormula
 	 * @param doc MathMLのDocument
 	 * @param inLine true=文章中の数式 false=数式単独
 	 * @param formula 数式の点字のリスト
-	 * @return 墨字の数<br/>負数=失敗した場合
+	 * @return 墨字の数<br>負数=失敗した場合
 	 */
 	public int fromMathML(Document doc, boolean inLine, List<BrailleInfo> formula)
 	{
