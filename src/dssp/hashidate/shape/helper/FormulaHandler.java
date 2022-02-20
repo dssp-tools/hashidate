@@ -225,7 +225,7 @@ public class FormulaHandler {
     }
 
     /**
-    * MathMLの数式い画像を取得する<br/>
+    * MathMLの数式い画像を取得する<br>
     *
     * getImageForMathML(String text, String fontFamily, Point2D.Double scale)で拡大率に縦、横1をしてした場合と同じ
     *
