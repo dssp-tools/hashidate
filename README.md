@@ -25,6 +25,18 @@ config.xml,braille.xml,equation.xml,mmlalias.xml,Lisense.txt
 
     launch4j hashidate.xml
 
+## Eclipseを使う場合
+
+#### プロジェクトのインポート
+1. ワークスペースにGitクローンする。
+1. 「ファイル」→「インポート」→「Maven既存プロジェクト」で、「ルートディレクトリ」にhashidateフォルダのパスを入力する。
+
+
+#### ビルド
+1. パッケージエクスプローラーでhashidateを選択して右クリックする。
+1. 「実行」→「Mavenビルド」で、「ゴール」に「package」を入力する。
+1. 「実行」ボタンをクリックする。
+
 ## 起動
 必要なソフトウェア
 * braillelib
